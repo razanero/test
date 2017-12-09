@@ -9,4 +9,5 @@
   <menuitem id="menu_todo_task"
     name="Todos"
     action="action_todo_task" />
+
 </odoo>
