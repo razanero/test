@@ -4,4 +4,5 @@
     'author': 'Daniel Reis',
     'depends': ['base'],
     'application': True,
+    'Data': ['views / todo_menu.xml'],
 }
