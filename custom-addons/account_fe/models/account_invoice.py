@@ -14,6 +14,6 @@ class AccountInvoice(models.Model):
     def action_invoice_open(self):
 
         res = super(AccountInvoice, self).action_invoice_paid()
-        _logger.warning('Tax Base Amount not computable probably due to a change in an underlying tax (%s).')
+        _logger.info('Tax Base Amount not computable probably due to a change in an underlying tax (%s).')
 
         return res
