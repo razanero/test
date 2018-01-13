@@ -4,8 +4,8 @@
 from odoo import api, exceptions, fields, models, _
 import logging
 
-
 _logger = logging.getLogger(__name__)
+
 
 class AccountControl(models.Model):
     _name = "account.invoice.control"
@@ -13,8 +13,4 @@ class AccountControl(models.Model):
 
     sequence = fields.Integer(help="invoice id.")
     state = fields.Char(string='Estado del envio',
-        help="lista de estados")
-
-
-
-
+                        help="lista de estados")
