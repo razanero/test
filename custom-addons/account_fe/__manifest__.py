@@ -8,7 +8,7 @@
     'sequence': 15,
     'summary': 'Facturación Electronica',
     'description': '',
-    'depends': ['base','account'],
+    'depends': ['base', 'account'],
     'data': [],
     'application': False,
 }
