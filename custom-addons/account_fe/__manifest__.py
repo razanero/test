@@ -9,7 +9,9 @@
     'summary': 'Facturación Electronica',
     'description': '',
     'depends': ['base', 'account'],
-    'data': [],
+    'data': [
+        'data/account_invoice_control_cron.xml'
+    ],
     'application': False,
     "installable": True
 }

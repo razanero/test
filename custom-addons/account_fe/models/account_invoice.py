@@ -23,3 +23,4 @@ class AccountInvoice(models.Model):
             control.create(vals)
 
         return res
+

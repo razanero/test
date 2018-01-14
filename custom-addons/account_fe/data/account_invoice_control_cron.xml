@@ -1,0 +1,12 @@
+<odoo>
+    <record model="ir.cron" id="account_invoice_control_job">
+        <field name="name">Sunat control</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_account_invoice_control"/>
+        <field name="state">code</field>
+        <field name="code">model._declare_sunat('annually')</field>
+    </record>
+</odoo>

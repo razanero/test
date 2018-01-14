@@ -19,3 +19,9 @@ class AccountControl(models.Model):
     def create(self, vals):
         control = super(AccountControl, self).create(vals)
         return control
+
+    @api.model
+    def _declare_sunat(self, frequency='minutes'):
+        _logger.info('Ejecutando llamanda  ')
+        account_control_list = self.env['account.invoice']
+        return account_control_list
