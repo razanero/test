@@ -11,6 +11,11 @@ class AccountControl(models.Model):
     _name = "account.invoice.control"
     _description = "Invoice Control"
 
-    sequence = fields.Integer(help="invoice id.")
+    invoice_id = fields.Integer(help="invoice id.")
     state = fields.Char(string='Estado del envio',
                         help="lista de estados")
+
+    @api.model
+    def create(self, vals):
+        control = super(AccountControl).create(vals)
+        return control

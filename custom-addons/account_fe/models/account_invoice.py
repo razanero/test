@@ -3,21 +3,23 @@
 from odoo import api, models
 import logging
 
-
 _logger = logging.getLogger(__name__)
+
 
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     @api.multi
     def action_invoice_open(self):
-
         res = super(AccountInvoice, self).action_invoice_open()
-        _logger.info('Tax Base Amount not computable probably due to a change in an underlying tax (%s).')
+
+        control = self.env['account.invoice.control']
+
+        for invoice in self:
+            _logger.info('Almacenando para declaracion a sunat ' + invoice.id)
+            vals = {
+                'invoice_id': invoice.id
+            }
+            control.create(vals)
 
         return res
-
-
-
-
-
