@@ -16,7 +16,7 @@ class AccountInvoice(models.Model):
         control = self.env['account.invoice.control']
 
         for invoice in self:
-            _logger.info('Almacenando para declaracion a sunat ' + invoice.id)
+            _logger.info('Almacenando para declaracion a sunat ' + str(invoice.id))
             vals = {
                 'invoice_id': invoice.id
             }
