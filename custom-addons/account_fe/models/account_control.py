@@ -17,5 +17,5 @@ class AccountControl(models.Model):
 
     @api.model
     def create(self, vals):
-        control = super(AccountControl).create(vals)
+        control = super(AccountControl, self).create(vals)
         return control
