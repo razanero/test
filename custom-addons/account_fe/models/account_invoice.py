@@ -18,7 +18,8 @@ class AccountInvoice(models.Model):
         for invoice in self:
             _logger.info('Almacenando para declaracion a sunat ' + str(invoice.id))
             vals = {
-                'invoice_id': invoice.id
+                'invoice_id': invoice.id,
+                'state': 'pendiente'
             }
             control.create(vals)
 
