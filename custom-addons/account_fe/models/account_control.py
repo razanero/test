@@ -23,7 +23,7 @@ class AccountControl(models.Model):
     @api.model
     def _declare_sunat(self, frequency='minutes'):
         _logger.info('Ejecutando llamanda  ')
-        account_control_list = self.env['account.invoice.control'].search([{'state': 'pendiente'}], order='id ASC')
+        account_control_list = self.env['account.invoice.control'].search([('state', '=', 'pendiente')], order='id ASC')
 
         if account_control_list:
             for child in account_control_list:
