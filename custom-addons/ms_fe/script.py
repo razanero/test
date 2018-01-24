@@ -1,5 +1,8 @@
 # This program prints Hello, world!
 import logging
+import sys
+sys.path.append('/home/odoo/.local/lib/python3.5/site-packages')
+
 import dexml
 
 _logger = logging.getLogger(__name__)
@@ -37,7 +40,7 @@ response = client.service.invoke("""<?xml version='1.0' encoding='UTF-8' standal
         <razonSocialEmisor>BIZLINKS SAC</razonSocialEmisor>
         <nombreComercialEmisor>BIZLINKS</nombreComercialEmisor>
         <tipoDocumento>01</tipoDocumento>
-        <serieNumero>FBIZ-00000005</serieNumero>
+        <serieNumero>FBIZ-00000006</serieNumero>
         <fechaEmision>2018-01-07</fechaEmision>
         <ubigeoEmisor>150122</ubigeoEmisor>
         <direccionEmisor>AV. CASIMIRO ULLOA NRO. 333</direccionEmisor>
