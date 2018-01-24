@@ -80,4 +80,4 @@ response = client.service.invoke("""<?xml version='1.0' encoding='UTF-8' standal
         </item>
     </documento>
 </SignOnLineCmd>""")
-print response
+print (response)
