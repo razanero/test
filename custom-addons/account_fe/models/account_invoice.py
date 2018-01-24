@@ -2,6 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import api, models
 import logging
+import sys
 
 _logger = logging.getLogger(__name__)
 
@@ -16,7 +17,7 @@ class AccountInvoice(models.Model):
         control = self.env['account.invoice.control']
 
         for invoice in self:
-            _logger.info('Almacenando para declaracion a sunat ' + str(invoice.id))
+            _logger.info('Almacenando para declaracion a sunat ' + str(invoice.id)+ " version "+sys.version)
             vals = {
                 'invoice_id': invoice.id,
                 'state': 'pendiente'
