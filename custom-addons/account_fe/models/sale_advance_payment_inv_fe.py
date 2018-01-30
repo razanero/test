@@ -6,7 +6,7 @@ from odoo import api, exceptions, fields, models, _
 
 
 class SaleAdvancePaymentInv(models.TransientModel):
-    _name = 'sale.advance.payment.inv'
+    _name = 'sale.advance.payment.inv.fe'
     _inherit = 'sale.advance.payment.inv'
 
     type_document = fields.Selection([
