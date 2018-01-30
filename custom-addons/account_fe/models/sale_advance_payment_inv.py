@@ -4,16 +4,12 @@
 import time
 
 from odoo import api, fields, models, _
-from odoo.addons import decimal_precision as dp
-from odoo.exceptions import UserError
 
 
 class SaleAdvancePaymentInv(models.TransientModel):
+    _name = "sale.advance.payment.inv.fe"
     _inherit = 'sale.advance.payment.inv'
 
     type_document = fields.Selection([
         ('01', 'Factura'),
-        ('03', 'Boleta')
-    ], readonly=True, index=True, change_default=True,
-        default=01,
-        track_visibility='always')
+        ('03', 'Boleta')], readonly=True, index=True, change_default=True, default=01, track_visibility='always')
