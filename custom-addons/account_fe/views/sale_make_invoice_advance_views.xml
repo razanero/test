@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
         <field name="arch" type="xml">
             <field name="deposit_taxes_id" position="after">
-                 <field name="type_document" attrs="{'required': [('type_document', '=', '01')]}"/>
+                 <field name="type_document" />
             </field>
         </field>
     </record>
