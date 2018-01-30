@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="account_invoice_view_form_inherit_payment" model="ir.ui.view">
+        <field name="name">Invoice Orders</field>
+        <field name="model">sale.advance.payment.inv</field>
+        <field name="inherit_id" ref="view_sale_advance_payment_inv"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+            </field>
+        </field>
+    </record>
+</odoo>
