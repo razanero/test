@@ -12,8 +12,8 @@ class SaleAdvancePaymentInv(models.TransientModel):
     _inherit = 'sale.advance.payment.inv'
 
     type_document = fields.Selection([
-            ('01','Factura'),
-            ('03','Boleta')
-        ], readonly=True, index=True, change_default=True,
+        ('01', 'Factura'),
+        ('03', 'Boleta')
+    ], readonly=True, index=True, change_default=True,
         default=01,
         track_visibility='always')
