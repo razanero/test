@@ -8,7 +8,7 @@
     'sequence': 15,
     'summary': 'Facturación Electronica',
     'description': '',
-    'depends': ['base', 'account'],
+    'depends': ['base', 'account', 'sales'],
     'data': [
         'data/account_invoice_control_cron.xml',
         'views/sale_make_invoice_advance_views_fe.xml',
