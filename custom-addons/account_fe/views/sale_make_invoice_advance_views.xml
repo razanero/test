@@ -8,9 +8,6 @@
             <field name="advance_payment_method" position="before">
                 <field name="type_document" widget="label_selection" />
             </field>
-            <field name="advance_payment_method" position="after">
-                <p> prueba</p>
-            </field>
         </field>
     </record>
 </odoo>
