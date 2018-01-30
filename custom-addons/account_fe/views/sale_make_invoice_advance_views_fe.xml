@@ -2,8 +2,9 @@
 <odoo>
     <record id="view_sale_advance_payment_inv" model="ir.ui.view">
         <field name="name">view_sale_advance_payment_inv.inherit</field>
-        <field name="model">sale.advance.payment.inv.fe</field>
+        <field name="model">sale.advance.payment.inv</field>
         <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+        <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <field name="advance_payment_method" position="before">
                 <field name="type_document" widget="label_selection" />

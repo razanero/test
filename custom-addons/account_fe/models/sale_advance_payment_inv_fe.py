@@ -6,9 +6,10 @@ from odoo import api, exceptions, fields, models, _
 
 
 class SaleAdvancePaymentInv(models.TransientModel):
-    _name = 'sale.advance.payment.inv.fe'
     _inherit = 'sale.advance.payment.inv'
 
-    type_document = fields.Selection([
+    _columns = {
+        'type_document' : fields.Selection([
         ('01', 'Factura'),
         ('03', 'Boleta')], default=01, required=True)
+    }
