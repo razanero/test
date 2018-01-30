@@ -5,9 +5,9 @@
         <field name="model">sale.advance.payment.inv</field>
         <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
         <field name="arch" type="xml">
-            <xpath expr="." position="inside">
-                <field name="state" />
-            </xpath>
+            <field name="advance_payment_method" position="before">
+                <field name="state"/>
+            </field>
         </field>
     </record>
 </odoo>
