@@ -13,7 +13,7 @@
     'depends': ['base', 'account', 'sale'],
     'data': [
         'data/account_invoice_control_cron.xml',
-        'views/sale_make_invoice_advance_views_fe.xml',
+        'views/sale_make_invoice_advance_views.xml',
     ],
     'application': False,
     "installable": True
