@@ -10,5 +10,5 @@ class SaleAdvancePaymentInv(models.TransientModel):
 
     type_document = fields.Selection([
         ('01', 'Factura'),
-        ('03', 'Boleta')], default='01', required=True)
+        ('03', 'Boleta')], required=True)
 
