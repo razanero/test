@@ -9,7 +9,6 @@ from odoo.exceptions import UserError
 
 
 class SaleAdvancePaymentInv(models.TransientModel):
-    _name = "sale.advance.payment.inv.fe"
     _inherit = 'sale.advance.payment.inv'
 
     state = fields.Char(string='Estado del envio',
