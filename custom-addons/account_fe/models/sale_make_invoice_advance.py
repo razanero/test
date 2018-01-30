@@ -10,5 +10,6 @@ class SaleAdvancePaymentInv(models.TransientModel):
 
     type_document = fields.Selection([
         ('01', 'Factura'),
-        ('03', 'Boleta')])
+        ('03', 'Boleta')],
+        string='Tipo de Comprobante')
 
