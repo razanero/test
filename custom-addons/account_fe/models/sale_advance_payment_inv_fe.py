@@ -11,4 +11,4 @@ class SaleAdvancePaymentInvFe(models.TransientModel):
 
     type_document = fields.Selection([
         ('01', 'Factura'),
-        ('03', 'Boleta')], readonly=True, index=True, change_default=True, default=01, track_visibility='always')
+        ('03', 'Boleta')], default=01, required=True)
