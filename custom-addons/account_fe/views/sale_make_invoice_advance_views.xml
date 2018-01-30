@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
         <field name="arch" type="xml">
             <field name="advance_payment_method" position="before">
-                <field name="type_document" widget="label_selection" />
+                <field name="type_document"  />
             </field>
         </field>
     </record>
