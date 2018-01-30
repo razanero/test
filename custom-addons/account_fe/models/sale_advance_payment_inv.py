@@ -11,5 +11,9 @@ from odoo.exceptions import UserError
 class SaleAdvancePaymentInv(models.TransientModel):
     _inherit = 'sale.advance.payment.inv'
 
-    state = fields.Char(string='Estado del envio',
-                        help="lista de estados")
+    type_document = fields.Selection([
+            ('01','Factura'),
+            ('03','Boleta')
+        ], readonly=True, index=True, change_default=True,
+        default=01,
+        track_visibility='always')
