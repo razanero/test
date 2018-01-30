@@ -4,6 +4,7 @@
 {
     'name': 'Invoice FE',
     'version': '1.0',
+    'website': 'http://main-solutions.com',
     'author': 'Main Solutions S.A.C.',
     'category': 'Accounting',
     'sequence': 15,
