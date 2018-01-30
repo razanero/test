@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import time
 
-from odoo import api, fields, models, _
+from odoo import api, exceptions, fields, models, _
+
 
 class SaleAdvancePaymentInv(models.TransientModel):
     _name = "sale.advance.payment.inv.fe"
