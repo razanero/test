@@ -5,7 +5,7 @@
         <field name="model">sale.advance.payment.inv</field>
         <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
         <field name="arch" type="xml">
-            <field name="advance_payment_method" position="before">
+            <field name="deposit_taxes_id" position="before">
                  <field name="type_document" attrs="{'required': [('type_document', '=', '01')]}"/>
             </field>
         </field>
