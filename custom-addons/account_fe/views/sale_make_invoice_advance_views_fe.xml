@@ -6,9 +6,7 @@
         <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
         <field name="arch" type="xml">
             <field name="advance_payment_method" position="before">
-                 <p class="oe_grey">
-                        prueba de label
-                    </p>
+                 <field name="state"/>
             </field>
         </field>
     </record>
