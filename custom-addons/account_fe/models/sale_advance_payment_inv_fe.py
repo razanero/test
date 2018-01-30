@@ -5,7 +5,6 @@ import time
 
 from odoo import api, fields, models, _
 
-
 class SaleAdvancePaymentInv(models.TransientModel):
     _name = "sale.advance.payment.inv.fe"
     _inherit = 'sale.advance.payment.inv'
