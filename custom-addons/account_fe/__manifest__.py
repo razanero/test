@@ -12,7 +12,7 @@
     'description': '',
     'depends': ['base', 'account', 'sale'],
     'data': [
-        'data/account_invoice_control_cron.xml'
+        'data/account_invoice_control_cron.xml',
         'views/account_view.xml'
     ],
     'application': False,
