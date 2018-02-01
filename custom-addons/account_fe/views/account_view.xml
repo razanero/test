@@ -6,7 +6,7 @@
             <field name="model">account.journal</field>
             <field name="inherit_id" ref="account.view_account_journal_form"/>
             <field name="arch" type="xml">
-                <field name="type" position="before">
+                <field name="group_invoice_lines" position="after">
                     <field name="type_document"/>
                 </field>
             </field>
