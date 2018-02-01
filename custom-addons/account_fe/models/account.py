@@ -14,7 +14,7 @@ class AccountJournal(models.Model):
         ('01', 'Factura'),
         ('03', 'Boleta'),
         ('07', 'Nota Crédito'),
-    ], string='Tipo de Comprobante Asociado', default='01')
+    ], string='Tipo de Comprobante Asociado', default='01', required='True')
 
 
 
