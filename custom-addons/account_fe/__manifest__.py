@@ -12,8 +12,8 @@
     'description': '',
     'depends': ['base', 'account', 'sale'],
     'data': [
-        'data/account_invoice_control_cron.xml',
-        'views/sale_make_invoice_advance_views.xml',
+        'data/account_invoice_control_cron.xml'
+        'views/view_account_journal_form_inherit.xml'
     ],
     'application': False,
     "installable": True

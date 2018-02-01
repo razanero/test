@@ -8,11 +8,12 @@ _logger = logging.getLogger(__name__)
 
 
 class AccountInvoice(models.Model):
-    _inherit = 'account.invoice'
+    _inherit = 'account.journal'
 
     type_document = fields.Selection([
         ('01', 'Factura'),
-        ('03', 'Boleta')
+        ('03', 'Boleta'),
+        ('07', 'Nota Crédito'),
     ], string='Tipo de Comprobante', default='01')
 
     @api.multi
