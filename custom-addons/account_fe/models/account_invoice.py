@@ -10,11 +10,6 @@ _logger = logging.getLogger(__name__)
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    type_document = fields.Selection([
-        ('01', 'Factura'),
-        ('03', 'Boleta')
-    ], string='Tipo de Comprobante', default='01')
-
     @api.multi
     def action_invoice_open(self):
         res = super(AccountInvoice, self).action_invoice_open()

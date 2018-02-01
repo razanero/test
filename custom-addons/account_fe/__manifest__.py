@@ -13,7 +13,7 @@
     'depends': ['base', 'account', 'sale'],
     'data': [
         'data/account_invoice_control_cron.xml'
-        'views/view_account_journal_form_inherit.xml'
+        'views/account_view.xml'
     ],
     'application': False,
     "installable": True
