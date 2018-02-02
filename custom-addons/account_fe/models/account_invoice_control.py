@@ -37,18 +37,22 @@ class AccountControl(models.Model):
         return account_control_list
 
     @api.model
-    def build(self, invoiceEntity):
+    def build(self, invoice_entity):
+
         p = SignOnLineCmd(declare_sunat="0", declare_direct_sunat="0", publish=0, output="PDF")
+
+
         p.parametros.append(Parameter(value="10455548816", name="idEmisor"))
-        p.parametros.append(Parameter(value="01", name="tipoDocumento"))
+        p.parametros.append(Parameter(value=invoice_entity.journal_id.type_document, name="tipoDocumento"))
+
         documento = Documento(totalDescuentos=float(4.52))
         documento.tipoDocumentoEmisor = "01"
         documento.numeroDocumentoEmisor = "10413168533"
         documento.razonSocialEmisor = "test"
         documento.nombreComercialEmisor = "dsds"
         documento.tipoDocumento = "01"
-        documento.serieNumero = invoiceEntity.number
-        documento.fechaEmision = invoiceEntity.date_invoice
+        documento.serieNumero = invoice_entity.number
+        documento.fechaEmision = invoice_entity.date_invoice
         documento.ubigeoEmisor = ""
         documento.direccionEmisor = "2544"
         documento.urbanizacion = "5454"
