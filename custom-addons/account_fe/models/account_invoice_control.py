@@ -29,7 +29,7 @@ class AccountControl(models.Model):
         if account_control_list:
             for child in account_control_list:
                 _logger.info('Ejecutando llamanda  del id ' + str(child.id))
-                for invoiceEntity in self.env['account.invoice'].search([('id', '=', child.id)]):
+                for invoiceEntity in self.env['account.invoice'].search([('id', '=', child.invoice_id)]):
                     self.build(invoiceEntity)
 
                 child._write({'state': 'declarado'})
