@@ -80,62 +80,6 @@ class SignOnLineCmd(dexml.Model):
     documentos = fields.List(Documento)
 
 
-p = SignOnLineCmd(declare_sunat="0", declare_direct_sunat="0", publish=0, output="PDF")
-p.parametros.append(Parameter(value="10455548816", name="idEmisor"))
-p.parametros.append(Parameter(value="01", name="tipoDocumento"))
-documento = Documento(totalDescuentos=float(4.52))
-documento.tipoDocumentoEmisor = "01"
-documento.numeroDocumentoEmisor = "10413168533"
-documento.razonSocialEmisor = "test"
-documento.nombreComercialEmisor = "dsds"
-documento.tipoDocumento = "01"
-documento.serieNumero = "F00"
-documento.fechaEmision = "2018-02-01"
-documento.ubigeoEmisor = ""
-documento.direccionEmisor = "2544"
-documento.urbanizacion = "5454"
-documento.provinciaEmisor = "54"
-documento.departamentoEmisor = "5454"
-documento.distritoEmisor = "545"
-documento.paisEmisor = "PE"
-documento.correoEmisor = "DSDSD@DSDS.COM"
-documento.tipoDocumentoAdquiriente = "01"
-documento.numeroDocumentoAdquiriente = "104125444"
-documento.razonSocialAdquiriente = "DSDSD"
-documento.correoAdquiriente = "DSDS@SDSD.CIN"
-documento.tipoMoneda = "PEN"
-documento.totalValorVentaNetoOpGravadas = 100
-documento.totalValorVentaNetoOpNoGravada = 200
-documento.totalValorVentaNetoOpExoneradas = 200
-documento.subTotal = 10
-documento.totalIgv = 18
-documento.totalDescuentos = 105
-documento.totalVenta = 100
-documento.inHabilitado = 1
-documento.codigoLeyenda_1 = "101"
-documento.textoLeyenda_1 = "41545"
-
-
-item1=Item()
-item1.indicador = "D"
-item1.numeroOrdenItem = "1"
-item1.codigoProducto = "10"
-item1.descripcion = "100"
-item1.cantidad = 10
-item1.unidadMedida = "UM"
-item1.importeUnitarioSinImpuesto = 100
-item1.importeUnitarioConImpuesto = 100
-item1.codigoImporteUnitarioConImpuesto = "100"
-item1.importeTotalSinImpuesto = 100
-item1.importeDescuento = 100
-item1.importeCargo = 100
-item1.codigoRazonExoneracion = "10"
-item1.importeIgv = 100
-
-documento.items.append(item1)
-
-p.documentos.append(documento)
-print p.render(fragment=True)
 
 # from suds.client import Client
 #
