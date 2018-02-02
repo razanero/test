@@ -48,7 +48,7 @@ class AccountControl(models.Model):
         documento.nombreComercialEmisor = "dsds"
         documento.tipoDocumento = "01"
         documento.serieNumero = invoiceEntity.number
-        documento.fechaEmision = invoiceEntity.date_invoice.strftime("%Y-%m-%d")
+        documento.fechaEmision = invoiceEntity.date_invoice
         documento.ubigeoEmisor = ""
         documento.direccionEmisor = "2544"
         documento.urbanizacion = "5454"
