@@ -41,8 +41,7 @@ class AccountControl(models.Model):
 
         p = SignOnLineCmd(declare_sunat="0", declare_direct_sunat="0", publish=0, output="PDF")
 
-
-        p.parametros.append(Parameter(value="10455548816", name="idEmisor"))
+        p.parametros.append(Parameter(value=invoice_entity.company_id.partner_id.vat, name="idEmisor"))
         p.parametros.append(Parameter(value=invoice_entity.journal_id.type_document, name="tipoDocumento"))
 
         documento = Documento(totalDescuentos=float(4.52))
