@@ -88,10 +88,8 @@ class AccountControl(models.Model):
         item1.importeCargo = 100
         item1.codigoRazonExoneracion = "10"
         item1.importeIgv = 100
-
         documento.items.append(item1)
-
         p.documentos.append(documento)
-        print p.render(fragment=True)
+        _logger.info('Ejecutando llamanda  del id ' + p.render(fragment=True))
 
         return self
