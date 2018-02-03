@@ -41,30 +41,34 @@ class AccountControl(models.Model):
 
         p = SignOnLineCmd(declare_sunat="0", declare_direct_sunat="0", publish=0, output="PDF")
 
-        p.parametros.append(Parameter(value=invoice_entity.company_id.partner_id.vat, name="idEmisor"))
+        emisor_partner = invoice_entity.company_id.partner_id
+        p.parametros.append(Parameter(value=emisor_partner.vat, name="idEmisor"))
         p.parametros.append(Parameter(value=invoice_entity.journal_id.type_document, name="tipoDocumento"))
 
-        documento = Documento(totalDescuentos=float(4.52))
-        documento.tipoDocumentoEmisor = "01"
-        documento.numeroDocumentoEmisor = "10413168533"
-        documento.razonSocialEmisor = "test"
-        documento.nombreComercialEmisor = "dsds"
-        documento.tipoDocumento = "01"
+        documento = Documento()
+        documento.tipoDocumentoEmisor = "6"
+        documento.numeroDocumentoEmisor = emisor_partner.vat
+        documento.razonSocialEmisor = emisor_partner.name
+        documento.nombreComercialEmisor = emisor_partner.name
+        documento.ubigeoEmisor = emisor_partner.zip
+        documento.direccionEmisor = emisor_partner.street
+        documento.urbanizacion = "-"
+        documento.provinciaEmisor = "-"
+        documento.departamentoEmisor = "-"
+        documento.distritoEmisor = "-"
+        documento.paisEmisor = emisor_partner.country_id.code
+        documento.correoEmisor = emisor_partner.email
+
+        adquiriente_partner = invoice_entity.commercial_partner_id
+        documento.tipoDocumentoAdquiriente = "6"
+        documento.numeroDocumentoAdquiriente = adquiriente_partner.vat
+        documento.razonSocialAdquiriente = adquiriente_partner.name
+        documento.correoAdquiriente = adquiriente_partner.email
+
+        documento.tipoDocumento = invoice_entity.journal_id.type_document
         documento.serieNumero = invoice_entity.number
         documento.fechaEmision = invoice_entity.date_invoice
-        documento.ubigeoEmisor = ""
-        documento.direccionEmisor = "2544"
-        documento.urbanizacion = "5454"
-        documento.provinciaEmisor = "54"
-        documento.departamentoEmisor = "5454"
-        documento.distritoEmisor = "545"
-        documento.paisEmisor = "PE"
-        documento.correoEmisor = "DSDSD@DSDS.COM"
-        documento.tipoDocumentoAdquiriente = "01"
-        documento.numeroDocumentoAdquiriente = "104125444"
-        documento.razonSocialAdquiriente = "DSDSD"
-        documento.correoAdquiriente = "DSDS@SDSD.CIN"
-        documento.tipoMoneda = "PEN"
+        documento.tipoMoneda = invoice_entity.currency_id.name
         documento.totalValorVentaNetoOpGravadas = 100
         documento.totalValorVentaNetoOpNoGravada = 200
         documento.totalValorVentaNetoOpExoneradas = 200
