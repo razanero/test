@@ -92,11 +92,11 @@ class AccountControl(models.Model):
         item1.unidadMedida = "UM"
         item1.importeUnitarioSinImpuesto = 100
         item1.importeUnitarioConImpuesto = 100
-        item1.codigoImporteUnitarioConImpuesto = "100"
+        item1.codigoImporteUnitarioConImpuesto = "01"
         item1.importeTotalSinImpuesto = 100
         item1.importeDescuento = 100
         item1.importeCargo = 100
-        item1.codigoRazonExoneracion = "01"
+        item1.codigoRazonExoneracion = "10"
         item1.importeIgv = 100
         documento.items.append(item1)
         p.documentos.append(documento)
