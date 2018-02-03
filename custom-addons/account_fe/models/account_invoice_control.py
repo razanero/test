@@ -3,8 +3,10 @@
 
 from odoo import api, exceptions, fields, models, _
 from account_invoice_fe import Documento, Item, SignOnLineCmd, Parameter
-import logging
+from suds.client import Client
+from suds.transport.http import HttpAuthenticated
 
+import logging
 _logger = logging.getLogger(__name__)
 
 
@@ -30,7 +32,8 @@ class AccountControl(models.Model):
             for child in account_control_list:
                 _logger.info('Ejecutando llamanda  del id ' + str(child.id))
                 for invoiceEntity in self.env['account.invoice'].search([('id', '=', child.invoice_id)]):
-                    self.build(invoiceEntity)
+                    xml = self.build(invoiceEntity)
+                    self.send(xml)
 
                 child._write({'state': 'declarado'})
 
@@ -97,6 +100,16 @@ class AccountControl(models.Model):
         item1.importeIgv = 100
         documento.items.append(item1)
         p.documentos.append(documento)
-        _logger.info('Ejecutando llamanda  del id ' + p.render(fragment=True))
+        _logger.info('Ejecutando llamada  del id ' + p.render(fragment=True))
 
+        return p.render(fragment=True)
+
+
+    @api.model
+    def send(self, xml):
+        t = HttpAuthenticated(username='MAINSOLUTIONS', password='10455548816')
+        client = Client(url='http://test3.alignetsac.com/sfewsperu/ws/invoker?wsdl', transport=t)
+        response = client.service.invoke(xml)
+        _logger.info('resultado ' + response)
         return self
+
