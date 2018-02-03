@@ -42,7 +42,7 @@ class AccountControl(models.Model):
     @api.model
     def build(self, invoice_entity):
 
-        p = SignOnLineCmd(declare_sunat="0", declare_direct_sunat="0", publish=0, output="PDF")
+        p = SignOnLineCmd(declare_sunat="0", declare_direct_sunat="0", publish=1, output="PDF")
 
         emisor_partner = invoice_entity.company_id.partner_id
         p.parametros.append(Parameter(value=emisor_partner.vat, name="idEmisor"))

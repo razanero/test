@@ -16,6 +16,8 @@ from dexml import fields
 
 
 class Item(dexml.Model):
+    class meta:
+        tagname="item"
     indicador = fields.String(tagname="indicador")
     numeroOrdenItem = fields.String(tagname="numeroOrdenItem")
     codigoProducto = fields.String(tagname="codigoProducto")
@@ -33,7 +35,8 @@ class Item(dexml.Model):
 
 
 class Documento(dexml.Model):
-
+    class meta:
+        tagname="documento"
     tipoDocumentoEmisor = fields.String(tagname='tipoDocumentoEmisor')
     numeroDocumentoEmisor = fields.String(tagname='numeroDocumentoEmisor')
     razonSocialEmisor = fields.String(tagname='razonSocialEmisor')
@@ -67,6 +70,8 @@ class Documento(dexml.Model):
     items = fields.List(Item)
 
 class Parameter(dexml.Model):
+    class meta:
+        tagname="parameter"
     value = fields.String(attrname="value")
     name = fields.String(attrname="name")
 
