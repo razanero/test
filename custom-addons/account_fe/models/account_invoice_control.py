@@ -86,6 +86,9 @@ class AccountControl(models.Model):
         secuencia=0
         for line in invoice_entity.invoice_line_ids:
             secuencia=secuencia+1
+
+
+
             item1 = Item()
             item1.indicador = "D"
             item1.numeroOrdenItem = str(secuencia)
@@ -94,13 +97,22 @@ class AccountControl(models.Model):
             item1.cantidad = line.quantity
             item1.unidadMedida = "UM"
             item1.importeUnitarioSinImpuesto = line.price_unit
-            item1.importeUnitarioConImpuesto = line.price_unit*1.18
-            item1.codigoImporteUnitarioConImpuesto = "01"
+
+            impuestoUnitario=0
+            codigoImporteUnitarioConImpuesto="02"
+            codigoRazonExoneracion="30"
+            for impuesto in line.invoice_line_tax_ids:
+                impuestoUnitario = impuestoUnitario+ line.price_unit*(impuesto.amount/100)
+                codigoImporteUnitarioConImpuesto = "01"
+                codigoRazonExoneracion = "10"
+
+            item1.importeUnitarioConImpuesto= line.price_unit+impuestoUnitario
+            item1.codigoImporteUnitarioConImpuesto = codigoImporteUnitarioConImpuesto
             item1.importeTotalSinImpuesto = line.price_subtotal
             item1.importeDescuento = 0
             item1.importeCargo = 0
-            item1.codigoRazonExoneracion = "10"
-            item1.importeIgv = line.price_unit*0.18
+            item1.codigoRazonExoneracion = codigoRazonExoneracion
+            item1.importeIgv = impuestoUnitario
             documento.items.append(item1)
 
         p.documentos.append(documento)
