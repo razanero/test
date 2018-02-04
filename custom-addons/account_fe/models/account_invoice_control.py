@@ -72,33 +72,37 @@ class AccountControl(models.Model):
         documento.serieNumero = invoice_entity.number
         documento.fechaEmision = invoice_entity.date_invoice
         documento.tipoMoneda = invoice_entity.currency_id.name
-        documento.totalValorVentaNetoOpGravadas = 100
-        documento.totalValorVentaNetoOpNoGravada = 200
-        documento.totalValorVentaNetoOpExoneradas = 200
-        documento.subTotal = 10
-        documento.totalIgv = 18
-        documento.totalDescuentos = 105
-        documento.totalVenta = 100
+        documento.totalValorVentaNetoOpGravadas = invoice_entity.amount_untaxed
+        documento.totalValorVentaNetoOpNoGravada = 0
+        documento.totalValorVentaNetoOpExoneradas = 0
+        documento.subTotal = invoice_entity.amount_untaxed
+        documento.totalIgv = invoice_entity.amount_tax
+        documento.totalDescuentos = 0
+        documento.totalVenta = invoice_entity.amount_total
         documento.inHabilitado = 1
         documento.codigoLeyenda_1 = "101"
         documento.textoLeyenda_1 = "41545"
 
-        item1 = Item()
-        item1.indicador = "D"
-        item1.numeroOrdenItem = "1"
-        item1.codigoProducto = "10"
-        item1.descripcion = "100"
-        item1.cantidad = 10
-        item1.unidadMedida = "UM"
-        item1.importeUnitarioSinImpuesto = 100
-        item1.importeUnitarioConImpuesto = 100
-        item1.codigoImporteUnitarioConImpuesto = "01"
-        item1.importeTotalSinImpuesto = 100
-        item1.importeDescuento = 100
-        item1.importeCargo = 100
-        item1.codigoRazonExoneracion = "10"
-        item1.importeIgv = 100
-        documento.items.append(item1)
+        secuencia=0
+        for line in invoice_entity.invoice_line_ids:
+            secuencia=secuencia+1
+            item1 = Item()
+            item1.indicador = "D"
+            item1.numeroOrdenItem = str(secuencia)
+            item1.codigoProducto = line.product_id.default_code
+            item1.descripcion = line.product_id.name
+            item1.cantidad = line.product_id.quantity
+            item1.unidadMedida = "UM"
+            item1.importeUnitarioSinImpuesto = line.price_unit
+            item1.importeUnitarioConImpuesto = line.price_unit*1.18
+            item1.codigoImporteUnitarioConImpuesto = "01"
+            item1.importeTotalSinImpuesto = line.price_subtotal
+            item1.importeDescuento = 0
+            item1.importeCargo = 0
+            item1.codigoRazonExoneracion = "10"
+            item1.importeIgv = line.price_unit*0.18
+            documento.items.append(item1)
+
         p.documentos.append(documento)
         _logger.info('Ejecutando llamada  del id ' + p.render(fragment=True))
 
