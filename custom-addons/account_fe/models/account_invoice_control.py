@@ -119,8 +119,8 @@ class AccountControl(models.Model):
 
 
 
-        documento.totalValorVentaNetoOpGravadas = invoice_entity.amount_untaxed
-        documento.totalValorVentaNetoOpNoGravada = 0
+        documento.totalValorVentaNetoOpGravadas = totalValorVentaNetoOpGravadas
+        documento.totalValorVentaNetoOpNoGravada = totalValorVentaNetoOpNoGravada
         documento.totalValorVentaNetoOpExoneradas = 0
 
         p.documentos.append(documento)
