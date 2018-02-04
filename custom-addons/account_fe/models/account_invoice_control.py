@@ -91,7 +91,7 @@ class AccountControl(models.Model):
             item1.numeroOrdenItem = str(secuencia)
             item1.codigoProducto = line.product_id.default_code
             item1.descripcion = line.product_id.name
-            item1.cantidad = line.product_id.quantity
+            item1.cantidad = line.quantity
             item1.unidadMedida = "UM"
             item1.importeUnitarioSinImpuesto = line.price_unit
             item1.importeUnitarioConImpuesto = line.price_unit*1.18
