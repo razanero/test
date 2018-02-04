@@ -97,11 +97,11 @@ class AccountControl(models.Model):
             item1.importeUnitarioSinImpuesto = line.price_unit
 
             impuestoUnitario=0
-            codigoImporteUnitarioConImpuesto="02"
+            codigoImporteUnitarioConImpuesto="01"
             codigoRazonExoneracion="30"
             for impuesto in line.invoice_line_tax_ids:
                 impuestoUnitario = impuestoUnitario+ line.price_unit*(impuesto.amount/100)
-                codigoImporteUnitarioConImpuesto = "01"
+                # codigoImporteUnitarioConImpuesto = "01"
                 codigoRazonExoneracion = "10"
                 totalValorVentaNetoOpGravadas=totalValorVentaNetoOpGravadas+line.price_subtotal*(impuesto.amount/100)
 
