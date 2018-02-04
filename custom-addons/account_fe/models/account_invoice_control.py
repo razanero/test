@@ -72,23 +72,21 @@ class AccountControl(models.Model):
         documento.serieNumero = invoice_entity.number
         documento.fechaEmision = invoice_entity.date_invoice
         documento.tipoMoneda = invoice_entity.currency_id.name
-        documento.totalValorVentaNetoOpGravadas = invoice_entity.amount_untaxed
-        documento.totalValorVentaNetoOpNoGravada = 0
-        documento.totalValorVentaNetoOpExoneradas = 0
+
         documento.subTotal = invoice_entity.amount_untaxed
         documento.totalIgv = invoice_entity.amount_tax
         documento.totalDescuentos = 0
         documento.totalVenta = invoice_entity.amount_total
         documento.inHabilitado = 1
+
         documento.codigoLeyenda_1 = "101"
         documento.textoLeyenda_1 = "41545"
 
         secuencia=0
+        totalValorVentaNetoOpGravadas=0
+        totalValorVentaNetoOpNoGravada=0
         for line in invoice_entity.invoice_line_ids:
             secuencia=secuencia+1
-
-
-
             item1 = Item()
             item1.indicador = "D"
             item1.numeroOrdenItem = str(secuencia)
@@ -105,6 +103,10 @@ class AccountControl(models.Model):
                 impuestoUnitario = impuestoUnitario+ line.price_unit*(impuesto.amount/100)
                 codigoImporteUnitarioConImpuesto = "01"
                 codigoRazonExoneracion = "10"
+                totalValorVentaNetoOpGravadas=totalValorVentaNetoOpGravadas+line.price_subtotal*(impuesto.amount/100)
+
+            if impuestoUnitario==0 :
+                totalValorVentaNetoOpNoGravada=totalValorVentaNetoOpNoGravada+line.price_subtotal
 
             item1.importeUnitarioConImpuesto= line.price_unit+impuestoUnitario
             item1.codigoImporteUnitarioConImpuesto = codigoImporteUnitarioConImpuesto
@@ -114,6 +116,12 @@ class AccountControl(models.Model):
             item1.codigoRazonExoneracion = codigoRazonExoneracion
             item1.importeIgv = impuestoUnitario
             documento.items.append(item1)
+
+
+
+        documento.totalValorVentaNetoOpGravadas = invoice_entity.amount_untaxed
+        documento.totalValorVentaNetoOpNoGravada = 0
+        documento.totalValorVentaNetoOpExoneradas = 0
 
         p.documentos.append(documento)
         _logger.info('Ejecutando llamada  del id ' + p.render(fragment=True))
